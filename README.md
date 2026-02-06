@@ -95,9 +95,7 @@ Define search space (billions of configs) → Run 100 smart trials → Best foun
 - [Results](#results)
 - [Neural Networks vs Gradient Boosting](#neural-networks-vs-gradient-boosting)
 - [Key Learnings](#key-learnings)
-- [Future Improvements](#future-improvements)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Installation
 
