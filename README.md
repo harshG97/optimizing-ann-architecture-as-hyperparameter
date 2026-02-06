@@ -130,7 +130,7 @@ pip install -r requirements.txt
 jupyter notebook optimizing-ann-enhanced.ipynb
 ```
 
-## 💻 Usage
+## Usage
 
 ### Basic Workflow
 
@@ -443,59 +443,6 @@ Validation Loss: High → Gradually decreasing → Plateau (close to training)
 - ✅ Small gap between train/val (no overfitting)
 - ✅ Smooth curves (stable training)
 - ✅ Plateau reached (optimal performance)
-
-### Comparison with Gradient Boosting
-
-| Metric | Neural Network | CatBoost | LightGBM |
-|--------|---------------|----------|----------|
-| **Accuracy** | 91.4% | 91.5% | 90.8% |
-| **Training Time** | 30 min | 10 min | 5 min |
-| **Tuning Time** | 2 hours (100 trials) | 1.5 hours | 1.5 hours |
-| **Inference Speed** | Medium | Fast | Very Fast |
-| **Memory Usage** | Low | Medium | Low |
-| **Interpretability** | Low ⚫ | Medium 🟡 | Medium 🟡 |
-
-**Conclusion**: Very competitive performance, but tree models are faster!
-
-## Neural Networks vs Gradient Boosting
-
-### When to Use Neural Networks
-
-**Good For**:
-- ✅ **Large datasets** (100k+ samples): ANNs scale well
-- ✅ **Complex interactions**: Can learn intricate patterns
-- ✅ **Embedding learning**: Good for high-cardinality categoricals
-- ✅ **Ensemble diversity**: Different from tree models
-- ✅ **GPU available**: Parallel computation advantage
-
-**Example**: Image classification, NLP, large-scale recommender systems
-
-### When to Use Gradient Boosting (CatBoost/LightGBM)
-
-**Good For**:
-- ✅ **Tabular data**: Dominates Kaggle competitions
-- ✅ **Small-medium datasets** (<100k samples): Less prone to overfitting
-- ✅ **Categorical features**: Native handling in CatBoost
-- ✅ **Quick iteration**: Faster training
-- ✅ **Interpretability**: Feature importance, SHAP values
-
-**Example**: Credit risk, fraud detection, customer churn (this project!)
-
-### Best Strategy: Use Both in Ensemble!
-
-```
-Neural Network predictions + CatBoost + LightGBM
-                      ↓
-              Meta-model (Lasso)
-                      ↓
-            Final Predictions
-```
-
-**Why This Wins**:
-- Different algorithms learn different patterns
-- ANN captures deep interactions
-- Trees capture categorical patterns
-- Combining = Best of both worlds!
 
 ## Key Learnings
 
