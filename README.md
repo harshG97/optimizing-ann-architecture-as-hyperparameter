@@ -8,6 +8,8 @@
 
 An advanced **automated neural network architecture search** system using Optuna for depression prediction. Instead of manual hyperparameter tuning, this project demonstrates how to use **automated machine learning (AutoML)** to discover optimal deep learning architectures efficiently.
 
+See and run this notebook on [Kaggle](https://www.kaggle.com/code/harshg97/optimizing-ann-architecture-with-optuna?scriptVersionId=296153090).
+
 ## 📊 Project Overview
 
 This notebook tackles depression prediction using **deep learning** with a focus on **automated architecture optimization**. We explore billions of possible neural network configurations to find the best performing model.
