@@ -1,4 +1,4 @@
-# 🧠 Neural Network Architecture Optimization with Optuna
+# Neural Network Architecture Optimization with Optuna
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0+-orange.svg)](https://www.tensorflow.org/)
@@ -12,7 +12,7 @@ An advanced **automated neural network architecture search** system using Optuna
 
 This notebook tackles depression prediction using **deep learning** with a focus on **automated architecture optimization**. We explore billions of possible neural network configurations to find the best performing model.
 
-### 🎯 Problem Statement
+### Problem Statement
 
 Predict depression risk based on:
 - **Personal factors**: Age, income, work status
@@ -21,7 +21,7 @@ Predict depression risk based on:
 - **Lifestyle factors**: Sleep duration, dietary habits
 - **Mental health indicators**: Suicidal thoughts, family history
 
-### 🚀 Key Innovation: Automated Architecture Search
+### Automated Architecture Search
 
 **Traditional Approach** (Manual):
 ```
@@ -39,14 +39,14 @@ Define search space (billions of configs) → Run 100 smart trials → Best foun
 ✅ Automated: Requires minimal manual intervention
 ```
 
-### 🏆 Results
+### Results
 
 - **100 trials** exploring different architectures
 - **Optimal configuration**: Simple 1-layer network with 128 units
 - **Performance**: ~91% accuracy (comparable to gradient boosting)
 - **Key insight**: Simpler networks often beat complex ones on tabular data
 
-## ✨ Features
+## Features
 
 ### 🤖 Automated Architecture Search
 - ✅ **Optuna Framework**: TPE-based smart sampling
@@ -54,7 +54,7 @@ Define search space (billions of configs) → Run 100 smart trials → Best foun
 - ✅ **Pruning**: Stops unpromising trials early
 - ✅ **100 trials**: Comprehensive exploration
 
-### 🏗️ Comprehensive Hyperparameter Optimization
+### Comprehensive Hyperparameter Optimization
 
 | Component | Search Range | Purpose |
 |-----------|-------------|---------|
@@ -67,24 +67,24 @@ Define search space (billions of configs) → Run 100 smart trials → Best foun
 | **Optimizer** | Adam, RMSprop, SGD | Weight update algorithm |
 | **Batch Size** | 16, 32, 64, 128 | Training efficiency |
 
-### 🔧 Smart Preprocessing
+### Smart Preprocessing
 - ✅ **Target Encoding**: Categorical → numerical for neural networks
 - ✅ **Feature Engineering**: Ratios, bins, interactions
 - ✅ **Missing Value Handling**: Domain-driven imputation
 - ✅ **Outlier Treatment**: Logical validation
 
-### 📈 Robust Training
+### Robust Training
 - ✅ **Stratified K-Fold CV**: 5-fold for reliable estimates
 - ✅ **Early Stopping**: Prevents overfitting
 - ✅ **Learning Rate Reduction**: Adaptive optimization
 - ✅ **Ensemble Predictions**: Average across folds
 
-### 📊 Analysis & Visualization
+### Analysis & Visualization
 - ✅ **Architecture Visualization**: Network diagram
 - ✅ **Training Curves**: Loss progression per fold
 - ✅ **Performance Metrics**: Accuracy across CV folds
 
-## 🗂️ Table of Contents
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
@@ -99,7 +99,7 @@ Define search space (billions of configs) → Run 100 smart trials → Best foun
 - [Contributing](#contributing)
 - [License](#license)
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 
@@ -225,7 +225,7 @@ Toggle re-optimization:
 RETUNE_ANN = False  # Set True to re-run architecture search
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 neural-network-optuna-optimization/
@@ -246,7 +246,7 @@ neural-network-optuna-optimization/
     └── submission.csv
 ```
 
-## 🔬 Methodology
+## Methodology
 
 ### 1. Data Preprocessing
 
@@ -320,7 +320,7 @@ Final Prediction = Average(Model 1-5)
 - **ReduceLROnPlateau**: Adaptive learning rate
 - **ModelCheckpoint**: Save best weights
 
-## 🏗️ Architecture Search
+## Architecture Search
 
 ### Search Space Exploration
 
@@ -368,7 +368,7 @@ Simple (1 layer, 128 units):
   - Train Acc: 91%, Val Acc: 91% ← Best generalization!
 ```
 
-## 🧠 Neural Network Details
+## Neural Network Details
 
 ### Winning Architecture
 
@@ -415,7 +415,7 @@ Output (Depression probability)
 - Larger = more stable gradients
 - Smaller = more updates per epoch
 
-## 📈 Results
+## Results
 
 ### Performance Metrics
 
@@ -459,7 +459,7 @@ Validation Loss: High → Gradually decreasing → Plateau (close to training)
 
 **Conclusion**: Very competitive performance, but tree models are faster!
 
-## 🆚 Neural Networks vs Gradient Boosting
+## Neural Networks vs Gradient Boosting
 
 ### When to Use Neural Networks
 
@@ -499,7 +499,7 @@ Neural Network predictions + CatBoost + LightGBM
 - Trees capture categorical patterns
 - Combining = Best of both worlds!
 
-## 🎓 Key Learnings
+## Key Learnings
 
 ### 1. Architecture Search is Worth It
 
@@ -589,116 +589,9 @@ Epoch 55: Stopped, restored epoch 45 weights
 
 **Saved**: ~40 epochs of wasted computation!
 
-## 🚀 Future Improvements
-
-### Architecture Enhancements
-
-**Residual Connections**:
-```python
-x = Dense(128, activation='relu')(input)
-x = BatchNormalization()(x)
-shortcut = x
-x = Dense(128, activation='relu')(x)
-x = Add()([x, shortcut])  # Skip connection
-```
-- Helps gradient flow
-- Enables deeper networks
-- Used in ResNet
-
-**Attention Mechanisms**:
-```python
-attention = Dense(1, activation='softmax')(x)
-x = Multiply()([x, attention])  # Weight important features
-```
-- Focus on relevant features
-- Improves interpretability
-- State-of-art in NLP
-
-### Training Improvements
-
-**Learning Rate Scheduling**:
-```python
-# Cosine annealing
-lr_schedule = CosineAnnealingSchedule(initial_lr=0.001, T_max=100)
-```
-
-**Mixup Augmentation**:
-```python
-# Blend samples for regularization
-mixed_x = lambda * x1 + (1 - lambda) * x2
-mixed_y = lambda * y1 + (1 - lambda) * y2
-```
-
-**Test-Time Augmentation**:
-```python
-# Predict multiple times with dropout enabled
-preds = [model(x, training=True) for _ in range(10)]
-final_pred = np.mean(preds)
-```
-
-### Advanced Techniques
-
-**Entity Embeddings**:
-```python
-# Learn dense representations for categories
-embedding = Embedding(num_categories, embedding_dim)
-```
-- Better than target encoding for some tasks
-- Captures semantic relationships
-- Used in neural collaborative filtering
-
-**Neural Architecture Search (NAS)**:
-```python
-# Use reinforcement learning to design architecture
-controller = RNN()  # Generates architectures
-reward = model_performance()  # Evaluates them
-# Train controller to maximize reward
-```
-- Goes beyond Optuna's search
-- Can discover novel architectures
-- Very computationally expensive
-
-**AutoML Frameworks**:
-- **AutoKeras**: Automated Keras model search
-- **TPOT**: Genetic programming for ML pipelines
-- **H2O AutoML**: Comprehensive AutoML platform
-
-### Ensemble Methods
-
-**Snapshot Ensembling**:
-```python
-# Save models at different learning rate cycles
-models = [model_at_epoch_20, model_at_epoch_40, ...]
-ensemble_pred = average([m.predict(x) for m in models])
-```
-
-**Multi-Model Stacking**:
-```python
-# Different architectures
-model_1layer = create_model(layers=1)
-model_3layer = create_model(layers=3)
-model_5layer = create_model(layers=5)
-
-# Meta-learner combines them
-meta_model = LogisticRegression()
-```
-
 ## 🤝 Contributing
 
-Contributions welcome! Areas for help:
-
-### High Priority
-- [ ] Implement residual connections
-- [ ] Add entity embeddings for categoricals
-- [ ] Compare with AutoKeras
-- [ ] Multi-GPU training support
-- [ ] SHAP explanations for neural network
-
-### Medium Priority
-- [ ] Learning rate scheduling experiments
-- [ ] Different regularization techniques (L1, L2, elastic net)
-- [ ] Architecture visualization improvements
-- [ ] Hyperparameter importance analysis
+Contributions welcome!
 
 ### How to Contribute
 1. Fork the repository
@@ -706,27 +599,6 @@ Contributions welcome! Areas for help:
 3. Commit changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Open Pull Request
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
-## 📝 License
-
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
-
-## 🙏 Acknowledgments
-
-- **TensorFlow/Keras Team**: Excellent deep learning framework
-- **Optuna Developers**: Revolutionary hyperparameter optimization
-- **Kaggle Community**: Dataset and competition platform
-- **Scikit-learn**: Preprocessing and utilities
-- **Category Encoders**: Target encoding implementation
-
-## 📧 Contact
-
-Questions or suggestions?
-- Open an issue
-- Submit a pull request
-- Reach out via [your contact]
 
 ## 📚 References
 
